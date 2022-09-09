@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script>
+</head>
+
+<body>
+    <script>
+        const client = new WebTorrent()
+
+const torrentId = 'magnet:?xt=urn:btih:01e098ecfcbbe29a4e6319bc2fb0baaf753e583b&dn=La%20casa%20de%20papel%20-%20De%20T%c3%b3quio%20a%20Berlim%20S01E01%201080p%20WEB-DL%20DUBLADO%205.1&tr=udp%3a%2f%2ftracker.openbittorrent.com%3a80%2fannounce&tr=udp%3a%2f%2ftracker.publicbt.com%3a80%2fannounce'
+
+client.add(torrentId, function (torrent) {
+  // Torrents can contain many files. Let's use the .mp4 file
+  console.log(torrent)
+  const file = torrent.files.find(function (file) {
+    return file.name.endsWith('.mp4')
+  })
+
+  // Display the file by adding it to the DOM. Supports video, audio, image, etc. files
+  file.appendTo('body')
+})
+    </script>
+</body>
+
+</html>
